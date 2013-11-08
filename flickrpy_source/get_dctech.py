@@ -23,6 +23,38 @@ import random
 import Image
 import flickr
 
+def photos_search_adv(user_id='', auth=False,  tags='', tag_mode='', text='',\
+                  min_upload_date='', max_upload_date='',\
+                  min_taken_date='', max_taken_date='', \
+                  license='', per_page='', page='', sort='',\
+                  safe_search='', content_type='', extras = '', **kwargs):
+    """Returns a list of Photo objects.
+
+    If auth=True then will auth the user.  Can see private etc
+    """
+    method = 'flickr.photos.search'
+
+    data = flickr._doget(method, auth=auth, user_id=user_id, tags=tags, text=text,\
+                  min_upload_date=min_upload_date,\
+                  max_upload_date=max_upload_date, \
+                  min_taken_date=min_taken_date, \
+                  max_taken_date=max_taken_date, \
+                  license=license, per_page=per_page,\
+                  page=page, sort=sort,  safe_search=safe_search, \
+                  content_type=content_type, \
+                  tag_mode=tag_mode, \
+                  extras=extras, **kwargs)
+    
+    photos = []
+    if data.rsp.photos.__dict__.has_key('photo'):
+        if isinstance(data.rsp.photos.photo, list):
+            for photo in data.rsp.photos.photo:
+              photos.append(photo)
+        else:
+            photos = [data.rsp.photos.photo]
+    return photos
+
+
 def main(*argv):
     from getopt import getopt, GetoptError
   
@@ -35,13 +67,13 @@ def main(*argv):
     
     tags = ["dctech"]
     
-    photos = flickr.photos_search(tags=tags, per_page=40)
+    photos = photos_search_adv(tags=tags, per_page=40, sort="interestingness-desc", extras="url_m,views")
     
     urls = []
     
     for photo in photos:
-        urls.append(photo.getURL(size='Square', urlType='source'))
-        print(photo.getURL(size='Square', urlType='source'))
+        print(photo.url_m)
+        print(photo.views)
         
 
 if __name__ == '__main__':
