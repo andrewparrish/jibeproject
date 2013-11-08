@@ -1,9 +1,17 @@
 <html>
+<head>
+<title>Jibe Flickr Photos</title>
+<Link href="{{ STATIC_URL }}template.css" rel="stylesheet" type="text/css">
+</head>
+<body>
 	{% if photos %}
 		{% for photo in photos %}
-			<div>
-				<img src="{{ photo }}" />
-			</div>
+		<div>
+			<ul>
+				<li><img src="{{ photo }}" /></li>
+			</ul>
+		</div>
 		{% endfor %}
 	{% endif %}
+</body>
 </html>
