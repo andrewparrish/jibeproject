@@ -1,3 +1,9 @@
 <html>
-
+	{% if photos %}
+		{% for photo in photos %}
+			<div>
+				<img src="{{ media_url }}brother"/>
+			</div>
+		{% endfor %}
+	{% endif %}
 </html>
