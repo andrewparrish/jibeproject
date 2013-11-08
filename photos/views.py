@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.shortcuts import render
 from photos.models import Photo
 import flickr
-impott get_dctech
+import get_dctech
 
 def home(request):
 	tags = ["dctech"]
