@@ -9,7 +9,7 @@ import get_dctech
 def home(request):
 	tags = ["dctech"]
 	sort = "interestingness-desc"
-	extras = "url_m,views"
+	extras = "url_m,views,tags"
     	photos = get_dctech.photos_search_adv(tags=tags, per_page=40, sort=sort, extras=extras)
 	urls_and_views = []
 	for photo in photos:
