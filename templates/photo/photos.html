@@ -4,22 +4,12 @@
 <style>
 
 .photo-container{
-  margin-bottom: 10px;
+  width: 780px;
+  margin: 5px auto;
+  position: relative;
   border: 1px solid #ccc;
-  padding: 4px;
-  width: 200px;
-  min-height: 300px;
-  display: inline-block;
-  float: left;
-  background: #fff;
-  border-radius: 8px;
-}
-
-.photo-container .rating{
   display: block;
-  padding: 4px;
-  font-size: 14px;
-  color: #ccc;
+  background: #fff;
 }
 
 .photo-container img{
@@ -27,9 +17,41 @@
   height: auto;
 } 
 
+.photo-container .rating{
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  background: rgba(0,0,0,0.8);
+  padding: 4px;
+  display: block;
+  font-size: 14px;
+  color: #fff;
+  text-align: right;
+}
+
+.photo-container img{
+  max-width: 100%;
+  height: auto;
+} 
+
+body{
+  background-color: #777;
+  min-height: 100%;
+}
+
+.container{
+  width: 600px;
+  background: #eee;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  margin: 0 auto;
+}
+
 </style>
 </head>
 <body>
+<div class="container">
 <h1><span style="color: #fcc">DC</span>Tech</h1>
 	{% if photos %}
 		{% for photo in photos %}
@@ -47,5 +69,6 @@
 		</div>
 		{% endfor %}
 	{% endif %}
+</div>
 </body>
 </html>
