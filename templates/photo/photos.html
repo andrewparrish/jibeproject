@@ -1,14 +1,46 @@
 <html>
 <head>
 <title>Jibe Flickr Photos</title>
-<Link href="{{ STATIC_URL }}template.css" rel="stylesheet" type="text/css">
+<style>
+body{
+	background-color: green;
+}
+
+.photo-container{
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 4px;
+  width: 200px;
+  display: block;
+}
+
+.photo-container .rating{
+  display: block;
+  padding: 4px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.photo-container img{
+  max-width: 100%;
+  height: auto;
+} 
+</style>
 </head>
 <body>
+<h1><span style="color: #fcc">DC</span>Tech</h1>
 	{% if photos %}
 		{% for photo in photos %}
 		<div>
 			<ul>
-				<li><img src="{{ photo.url_m }}" />{{ photo.views }}</li>
+				<li class="photo-container">
+				  <div>
+				    <img src="{{ photo.url_m }}" />
+				  </div>
+				  <div class="views">
+				    {{ photo.views }} views
+				  </div>
+				</li>
 			</ul>
 		</div>
 		{% endfor %}
