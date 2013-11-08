@@ -14,5 +14,6 @@ def home(request):
 	urls_and_views = []
 	for photo in photos:
 		urls_and_views.append(photo)
+	photos = sorted(photos, key=lambda photo: photo.views) 
 	return render_to_response("photo/photos.html", dict(photos=urls_and_views))
 
