@@ -8,7 +8,7 @@
 		{% for photo in photos %}
 		<div>
 			<ul>
-				<li><img src="{{ photo }}" /></li>
+				<li><img src="{{ photo.url_m }}" />{{ photo.views }}</li>
 			</ul>
 		</div>
 		{% endfor %}
